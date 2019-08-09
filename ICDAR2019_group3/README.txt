@@ -51,15 +51,10 @@ page4와 page5에서는 f1 score가 계산되는 부분입니다.
 여기에 weights_path라는 기본 None으로 설정된 변수가 있는데, 이것을
 모델에 load하고싶은 weight의 path로 설정해주면 load한 weight로 f1 score를 계산하게 됩니다.
 weights_path를 None값으로 그대로 놓으면, page3에서 training했던 모델을 그대로 가져와서 씁니다.
-checkpoints 폴더에 저희가 train 시켜서 저장했던 weights.040.h5파일을 올려놓았으니,
-weights_path = 'checkpoints/weights.040.h5'로 설정하면 
-저희가 학습시킨 weight로 계산된 f1 score로 볼 수 있습니다.
 
 page4에서는
 ICDAR2019_test.pkl을 불러와서 random으로 500개의 data를 가져온 후,
 confidence threshold와 f1score에 대한 그래프를 그립니다.
-
-
 
 page5에서는
 ICDAR2017_validation.pkl을 불러와서 1800개의 data를 전부 가져온 후,
