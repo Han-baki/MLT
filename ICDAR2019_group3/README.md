@@ -57,6 +57,8 @@ page4에서는
 ICDAR2019_test.pkl을 불러와서 random으로 500개의 data를 가져온 후,
 confidence threshold와 f1score에 대한 그래프를 그립니다.
 
+
+
 page5에서는
 ICDAR2017_validation.pkl을 불러와서 1800개의 data를 전부 가져온 후,
 text detection에 대한 precision, recall, f1score과
