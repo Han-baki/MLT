@@ -8,7 +8,8 @@
 ICDAR2019 MLT data로 학습을 진행한 후, ICDAR2017 validation data로 모델 평가를 진행했습니다.
 
 
-ICDAR2019 MLT data 다운로드 : https://rrc.cvc.uab.es/?ch=15&com=downloads 에 들어가서 로그인 후, Task1에 있는 data를 다운로드
+#ICDAR2019 MLT data 다운로드  
+##https://rrc.cvc.uab.es/?ch=15&com=downloads 에 들어가서 로그인 후, Task1에 있는 data를 다운로드
 
 ICDAR2017 validation data 다운로드 : https://rrc.cvc.uab.es/?ch=8&com=downloads 에 들어가서 로그인 후, Task1의 Validation Set을 다운로드
 
