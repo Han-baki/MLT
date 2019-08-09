@@ -2,6 +2,7 @@
 
 3조의 작업을 tbpp_train.ipynb 파일에 담았습니다. Google colab의 GPU 환경에서 학습을 실행하였습니다.
 각 Cell들의 맨 위에, page0부터 page5로 주석을 달았습니다. 
+이론적 내용과 reference는 MLTBPP_final_group3.pptx 파일에 정리되어 있습니다.
 
 ICDAR2019 MLT data로 학습을 진행한 후, ICDAR2017 validation data로 모델 평가를 진행했습니다.
 
@@ -16,7 +17,6 @@ train_ImagesPart2_dir : ICDAR2019 ImagesPart2의 image파일이 있는 directory
 train_gt_dir : ICDAR2019 train_gt_t13의 text파일이 있는 directory
 test_img_dir : ICDAR2017 validation data의 image파일이 있는 directory
 test_gt_dir : ICDAR2017 validation data의 text파일이 있는 directory
-
 
 --------------------------------------------------------------------------------------------------------------
 
