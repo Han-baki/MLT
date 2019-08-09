@@ -1,52 +1,63 @@
+--------------------------------------------------------------------------------------------------------------
+3ì¡°ì˜ ì‘ì—…ì„ tbpp_train.ipynb íŒŒì¼ì— ë‹´ì•˜ìŠµë‹ˆë‹¤. Google colabì˜ GPU í™˜ê²½ì—ì„œ í•™ìŠµì„ ì‹¤í–‰í•˜ì˜€ìŠµë‹ˆë‹¤.
+ê° Cellë“¤ì˜ ë§¨ ìœ„ì—, page0ë¶€í„° page5ë¡œ ì£¼ì„ì„ ë‹¬ì•˜ìŠµë‹ˆë‹¤. 
 
-3Á¶ÀÇ ÀÛ¾÷À» tbpp_train.ipynb ÆÄÀÏ¿¡ ´ã¾Ò½À´Ï´Ù.
+ICDAR2019 MLT dataë¡œ í•™ìŠµì„ ì§„í–‰í•œ í›„, ICDAR2017 validation dataë¡œ ëª¨ë¸ í‰ê°€ë¥¼ ì§„í–‰í–ˆìŠµë‹ˆë‹¤.
 
-ÀÏ´Ü page0¿¡ ÀÖ´Â °ÍÀÌ inputÀÔ´Ï´Ù. input¿¡ ´ÙÀ½°ú °°ÀÌ Áı¾î³Ö¾îÁÖ°í run allÀ» ´©¸£¸é ÆÄÀÏÀÌ ÀüºÎ µ¹¾Æ°¡°Ô Çß½À´Ï´Ù.
-train_ImagesPart1_dir : ICDAR2019 ImagesPart1ÀÇ imageÆÄÀÏÀÌ ÀÖ´Â directory
-train_ImagesPart2_dir : ICDAR2019 ImagesPart2ÀÇ imageÆÄÀÏÀÌ ÀÖ´Â directory
-train_gt_dir : ICDAR2019 train_gt_t13ÀÇ textÆÄÀÏÀÌ ÀÖ´Â directory
-test_img_dir : ICDAR2017 validation dataÀÇ imageÆÄÀÏÀÌ ÀÖ´Â directory
-test_gt_dir : ICDAR2017 validation dataÀÇ textÆÄÀÏÀÌ ÀÖ´Â directory
+ICDAR2019 MLT data ë‹¤ìš´ë¡œë“œ : https://rrc.cvc.uab.es/?ch=15&com=downloads ì— ë“¤ì–´ê°€ì„œ ë¡œê·¸ì¸ í›„, Task1ì— ìˆëŠ” dataë¥¼ ë‹¤ìš´ë¡œë“œ
+ICDAR2017 validation data ë‹¤ìš´ë¡œë“œ : https://rrc.cvc.uab.es/?ch=8&com=downloads ì— ë“¤ì–´ê°€ì„œ ë¡œê·¸ì¸ í›„, Task1ì˜ Validation Setì„ ë‹¤ìš´ë¡œë“œ
+ë‘ dataë¥¼ ë‹¤ìš´ë¡œë“œ í›„, ì••ì¶•ì„ í’€ê³  dataë“¤ì˜ directory pathë“¤ì„ page0ì— ì…ë ¥í•©ë‹ˆë‹¤.
 
+page0ì— ìˆëŠ” ê²ƒì´ inputì…ë‹ˆë‹¤. inputì— ë‹¤ìŒê³¼ ê°™ì´ ì§‘ì–´ë„£ì–´ì£¼ê³  run allì„ ëˆ„ë¥´ë©´ íŒŒì¼ì´ ì „ë¶€ ëŒì•„ê°€ê²Œ í–ˆìŠµë‹ˆë‹¤.
+train_ImagesPart1_dir : ICDAR2019 ImagesPart1ì˜ imageíŒŒì¼ì´ ìˆëŠ” directory
+train_ImagesPart2_dir : ICDAR2019 ImagesPart2ì˜ imageíŒŒì¼ì´ ìˆëŠ” directory
+train_gt_dir : ICDAR2019 train_gt_t13ì˜ textíŒŒì¼ì´ ìˆëŠ” directory
+test_img_dir : ICDAR2017 validation dataì˜ imageíŒŒì¼ì´ ìˆëŠ” directory
+test_gt_dir : ICDAR2017 validation dataì˜ textíŒŒì¼ì´ ìˆëŠ” directory
 
-ÀúÈñ ÀÛ¾÷À» ¼ø¼­´ë·Î ³ª¿­ÇÏ¸é,
+--------------------------------------------------------------------------------------------------------------
 
-1. train, test data ¸¸µé±â (page1, page2)
+page1ë¶€í„° page5ê¹Œì§€ì˜ ì‘ì—…ì„ ìˆœì„œëŒ€ë¡œ ë‚˜ì—´í•˜ë©´,
+
+1. train, test data ë§Œë“¤ê¸° (page1, page2)
 2. model training (page3)
-3. thresholdÀÇ grid search (page4)
-4. ÃÖÁ¾ °á°ú (page5)
+3. thresholdê°’ì˜ grid search (page4)
+4. ìµœì¢… ê²°ê³¼ (page5)
 
-ÀÌ·¸°Ô ³× ´Ü°è·Î ³ª´¹´Ï´Ù.
+ì´ë ‡ê²Œ ë„¤ ë‹¨ê³„ë¡œ ë‚˜ë‰©ë‹ˆë‹¤.
 
-page1¿¡¼­´Â 
-2019 data 10000°³¿¡¼­ 54°³ÀÇ (¿¡·¯)ÀÌ¹ÌÁö¸¦ Á¦¿ÜÇÑ ÈÄ 9005°³, 941°³·Î ³ª´©°í,
-9005°³¸¦ train(directory)¿¡, 941°³¸¦ test(directory)¿¡ °¢°¢ ÀúÀåÇÕ´Ï´Ù. 
+--------------------------------------------------------------------------------------------------------------
 
-page2¿¡¼­´Â
-train 9005°³ =>ICDAR2019_train.pkl
-test 941°³ => ICDAR2019_test.pkl
-2017 µ¥ÀÌÅÍ 1800°³ => ICDAR2017_validation.pkl
-ÀÌ·¸°Ô pkl ÆÄÀÏ·Î ÀúÀåÇÕ´Ï´Ù.
+page1ì—ì„œëŠ” 
+2019 data 10000ê°œì—ì„œ 54ê°œì˜ (ì—ëŸ¬)ì´ë¯¸ì§€ë¥¼ ì œì™¸í•œ í›„ 9005ê°œ, 941ê°œë¡œ ë‚˜ëˆ„ê³ ,
+9005ê°œë¥¼ train(directory)ì—, 941ê°œë¥¼ test(directory)ì— ê°ê° ì €ì¥í•©ë‹ˆë‹¤. 
 
-page3¿¡¼­´Â
-ICDAR2019_train.pkl ÆÄÀÏÀ» ºÒ·¯¿Í¼­ 40 epoch trainÀ» ¼öÇàÇÕ´Ï´Ù.
-1~20 epochÀº learning rate = 5*e-4
-21~40 epochÀº learning rate = 2*e-4 ·Î ¼öÇàÇÕ´Ï´Ù.
-Ã¹ ¿¡ÆøÀÌ Á» ¿À·¡°É¸®°í µÎ¹øÂ° ¿¡ÆøºÎÅÍ´Â 1¿¡Æø´ç 22ºĞÁ¤µµ °É¸³´Ï´Ù.
+page2ì—ì„œëŠ”
+train 9005ê°œ =>ICDAR2019_train.pkl
+test 941ê°œ => ICDAR2019_test.pkl
+2017 ë°ì´í„° 1800ê°œ => ICDAR2017_validation.pkl
+ì´ë ‡ê²Œ pkl íŒŒì¼ë¡œ ì €ì¥í•©ë‹ˆë‹¤.
 
-page4¿Í page5¿¡¼­´Â f1 score°¡ °è»êµÇ´Â ºÎºĞÀÔ´Ï´Ù.
-¿©±â¿¡ weights_path¶ó´Â ±âº» NoneÀ¸·Î ¼³Á¤µÈ º¯¼ö°¡ ÀÖ´Âµ¥, ÀÌ°ÍÀ»
-¸ğµ¨¿¡ loadÇÏ°í½ÍÀº weightÀÇ path·Î ¼³Á¤ÇØÁÖ¸é loadÇÑ weight·Î f1 score¸¦ °è»êÇÏ°Ô µË´Ï´Ù.
-weights_path¸¦ None°ªÀ¸·Î ±×´ë·Î ³ÀµÎ¸é, page3¿¡¼­ trainingÇß´ø ¸ğµ¨À» ±×´ë·Î °¡Á®¿Í¼­ ¾¹´Ï´Ù.
-checkpoints Æú´õ¿¡ ÀúÈñ°¡ train ½ÃÄÑ¼­ ÀúÀåÇß´ø weights.040.h5ÆÄÀÏÀ» ¿Ã·Á³õ¾ÒÀ¸´Ï,
-weights_path = 'checkpoints/weights.040.h5'·Î ¼³Á¤ÇÏ¸é 
-ÀúÈñ°¡ ÇĞ½À½ÃÅ² weight·Î °è»êµÈ f1 score·Î º¼ ¼ö ÀÖ½À´Ï´Ù.
+page3ì—ì„œëŠ”
+ICDAR2019_train.pkl íŒŒì¼ì„ ë¶ˆëŸ¬ì™€ì„œ 40 epoch trainì„ ìˆ˜í–‰í•©ë‹ˆë‹¤.
+1~20 epochì€ learning rate = 5*e-4
+21~40 epochì€ learning rate = 2*e-4 ë¡œ ìˆ˜í–‰í•©ë‹ˆë‹¤.
+ì²« ì—í­ì´ ì˜¤ë˜ê±¸ë¦¬ê³ , ë‘ë²ˆì§¸ ì—í­ë¶€í„°ëŠ” 1ì—í­ë‹¹ 22ë¶„ì •ë„ ê±¸ë¦½ë‹ˆë‹¤.
 
-page4¿¡¼­´Â
-ICDAR2019_test.pklÀ» ºÒ·¯¿Í¼­ randomÀ¸·Î 500°³ÀÇ data¸¦ °¡Á®¿Â ÈÄ,
-confidence threshold¿Í f1score¿¡ ´ëÇÑ ±×·¡ÇÁ¸¦ ±×¸³´Ï´Ù.
+page4ì™€ page5ì—ì„œëŠ” f1 scoreê°€ ê³„ì‚°ë˜ëŠ” ë¶€ë¶„ì…ë‹ˆë‹¤.
+ì—¬ê¸°ì— weights_pathë¼ëŠ” ê¸°ë³¸ Noneìœ¼ë¡œ ì„¤ì •ëœ ë³€ìˆ˜ê°€ ìˆëŠ”ë°, ì´ê²ƒì„
+ëª¨ë¸ì— loadí•˜ê³ ì‹¶ì€ weightì˜ pathë¡œ ì„¤ì •í•´ì£¼ë©´ loadí•œ weightë¡œ f1 scoreë¥¼ ê³„ì‚°í•˜ê²Œ ë©ë‹ˆë‹¤.
+weights_pathë¥¼ Noneê°’ìœ¼ë¡œ ê·¸ëŒ€ë¡œ ë†“ìœ¼ë©´, page3ì—ì„œ trainingí–ˆë˜ ëª¨ë¸ì„ ê·¸ëŒ€ë¡œ ê°€ì ¸ì™€ì„œ ì”ë‹ˆë‹¤.
+checkpoints í´ë”ì— ì €í¬ê°€ train ì‹œì¼œì„œ ì €ì¥í–ˆë˜ weights.040.h5íŒŒì¼ì„ ì˜¬ë ¤ë†“ì•˜ìœ¼ë‹ˆ,
+weights_path = 'checkpoints/weights.040.h5'ë¡œ ì„¤ì •í•˜ë©´ 
+ì €í¬ê°€ í•™ìŠµì‹œí‚¨ weightë¡œ ê³„ì‚°ëœ f1 scoreë¡œ ë³¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤.
 
-page5¿¡¼­´Â
-ICDAR2017_validation.pklÀ» ºÒ·¯¿Í¼­ 1800°³ÀÇ data¸¦ ÀüºÎ °¡Á®¿Â ÈÄ,
-text detection¿¡ ´ëÇÑ precision, recall, f1score°ú
-text detection + classification¿¡ ´ëÇÑ precision, recall, f1score¸¦ Ãâ·ÂÇÕ´Ï´Ù.
+page4ì—ì„œëŠ”
+ICDAR2019_test.pklì„ ë¶ˆëŸ¬ì™€ì„œ randomìœ¼ë¡œ 500ê°œì˜ dataë¥¼ ê°€ì ¸ì˜¨ í›„,
+confidence thresholdì™€ f1scoreì— ëŒ€í•œ ê·¸ë˜í”„ë¥¼ ê·¸ë¦½ë‹ˆë‹¤.
+
+page5ì—ì„œëŠ”
+ICDAR2017_validation.pklì„ ë¶ˆëŸ¬ì™€ì„œ 1800ê°œì˜ dataë¥¼ ì „ë¶€ ê°€ì ¸ì˜¨ í›„,
+text detectionì— ëŒ€í•œ precision, recall, f1scoreê³¼
+text detection + classificationì— ëŒ€í•œ precision, recall, f1scoreë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.
+--------------------------------------------------------------------------------------------------------------
