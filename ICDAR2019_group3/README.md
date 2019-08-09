@@ -1,15 +1,19 @@
 --------------------------------------------------------------------------------------------------------------
 
 3조의 작업을 tbpp_train.ipynb 파일에 담았습니다. Google colab의 GPU 환경에서 학습을 실행하였습니다.
+
 각 Cell들의 맨 위에, page0부터 page5로 주석을 달았습니다. 
 
 ICDAR2019 MLT data로 학습을 진행한 후, ICDAR2017 validation data로 모델 평가를 진행했습니다.
 
 ICDAR2019 MLT data 다운로드 : https://rrc.cvc.uab.es/?ch=15&com=downloads 에 들어가서 로그인 후, Task1에 있는 data를 다운로드
+
 ICDAR2017 validation data 다운로드 : https://rrc.cvc.uab.es/?ch=8&com=downloads 에 들어가서 로그인 후, Task1의 Validation Set을 다운로드
+
 두 data를 다운로드 후, 압축을 풀고 data들의 directory path들을 page0에 입력합니다.
 
 page0에 있는 것이 input입니다. input에 다음과 같이 집어넣어주고 run all을 누르면 파일이 전부 돌아가게 했습니다.
+
 train_ImagesPart1_dir : ICDAR2019 ImagesPart1의 image파일이 있는 directory
 train_ImagesPart2_dir : ICDAR2019 ImagesPart2의 image파일이 있는 directory
 train_gt_dir : ICDAR2019 train_gt_t13의 text파일이 있는 directory
